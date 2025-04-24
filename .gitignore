@@ -3,8 +3,3 @@ train/**
 
 # ignore the zip files
 *.zip
-
-# ignore uv stuff
-uv.lock
-.python-version
-pyproject.toml
