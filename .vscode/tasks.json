@@ -53,6 +53,7 @@
         },
         {
             "label": "django: collect static",
+            "detail": "Collect al static files for WhiteNoise to serve.",
             "type": "shell",
             "group": "build",
             "options": {
@@ -71,22 +72,71 @@
             }
         },
         {
-            "label": "django: run dev",
+            "label": "django: start tailwind",
+            "detail": "Start the tailwind dev server",
             "type": "shell",
             "group": "build",
-            "windows": {
-                "command": "uv run manage.py runserver"
-            },
             "options": {
                 "cwd": "${workspaceFolder}/web_app"
             },
-            "problemMatcher": [],
+            "isBackground": true,
+            "command": "uv run manage.py tailwind start",
+            "problemMatcher": {
+                "pattern": [
+                    {
+                        "regexp": "^.*$", // Matches any line (required for problemMatcher to be valid)
+                        "file": 1,
+                        "location": 2,
+                        "message": 3
+                    }
+                ],
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": "^> web@\\d+\\.\\d+\\.\\d+ start", // Matches "> web@4.0.1 start"
+                    "endsPattern": "^> cross-env NODE_ENV=development" // Matches "> cross-env NODE_ENV=development"
+                }
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "dedicated",
+                "showReuseMessage": true,
+                "clear": false,
+                "group": "django"
+            },
+        },
+        {
+            "label": "django: run dev",
+            "detail": "Run all commands for the dev server",
+            "type": "shell",
+            "group": "build",
+            "command": "uv run manage.py runserver",
+            "dependsOn":["django: start tailwind"],
+            "options": {
+                "cwd": "${workspaceFolder}/web_app"
+            },
+            "problemMatcher": {
+                    "pattern": [
+                    {
+                        "regexp": "^.*$",
+                        "file": 1,
+                        "location": 2,
+                        "message": 3
+                    }
+                ],
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": "^Watching for file changes with StatReloader",
+                    "endsPattern": "^Quit the server with CONTROL-C."
+                }
+            },
             "presentation": {
                 "echo": true,
                 "reveal": "always",
                 "focus": true,
                 "panel": "dedicated",
-                "showReuseMessage": false,
+                "showReuseMessage": true,
                 "clear": false,
                 "group": "django"
             }
