@@ -1,7 +1,8 @@
 # Create your views here.
 
-from django.http import HttpResponse, HttpRequest
+from django.http import HttpResponse
 from django.template import loader
+
 
 def home(request):
     template = loader.get_template("qme.html")
