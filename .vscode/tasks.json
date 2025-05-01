@@ -1,0 +1,95 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "ruff: lint",
+            "type": "shell",
+            "command": "uv run ruff check --fix",
+            "problemMatcher": [],
+            "presentation": {
+                "echo": true,
+                "reveal": "never",
+                "focus": false,
+                "panel": "dedicated",
+                "showReuseMessage": false,
+                "clear": false,
+                "group": "formatting"
+            }
+        },
+        {
+            "label": "ruff: format",
+            "type": "shell",
+            "command": "uv run ruff format",
+            "presentation": {
+                "echo": true,
+                "reveal": "never",
+                "focus": false,
+                "panel": "dedicated",
+                "showReuseMessage": false,
+                "clear": false,
+                "group": "formatting"
+            }
+        },
+        {
+            "label": "ruff: clean",
+            "detail": "Runs both ruff: lint and ruff: format",
+            "type": "shell",
+            "dependsOn": [
+                "ruff: lint",
+                "ruff: format"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "never",
+                "focus": false,
+                "panel": "dedicated",
+                "showReuseMessage": false,
+                "clear": false,
+                "group": "formatting"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "django: collect static",
+            "type": "shell",
+            "group": "build",
+            "options": {
+                "cwd": "${workspaceFolder}/web_app"
+            },
+            "command": "uv run manage.py collectstatic",
+            "problemMatcher": [],
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "dedicated",
+                "showReuseMessage": false,
+                "clear": false,
+                "group": "django"
+            }
+        },
+        {
+            "label": "django: run dev",
+            "type": "shell",
+            "group": "build",
+            "windows": {
+                "command": "uv run manage.py runserver"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/web_app"
+            },
+            "problemMatcher": [],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "dedicated",
+                "showReuseMessage": false,
+                "clear": false,
+                "group": "django"
+            }
+        }
+    ]
+}

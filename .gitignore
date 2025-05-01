@@ -3,3 +3,15 @@ train/**
 
 # ignore the zip files
 *.zip
+
+# ignore pycache folders
+**/__pycache__
+
+# ignore db
+**/*.sqlite3
+
+# ignore static files
+**/staticfiles/*
+
+# ignore .env files
+**/.env
