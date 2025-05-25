@@ -7,7 +7,7 @@ from pathlib import Path
 import keras
 import tensorflow as tf
 from django.http import JsonResponse
-from ninja import Form, NinjaAPI
+from ninja import NinjaAPI
 from ninja.files import UploadedFile
 from PIL import Image
 
