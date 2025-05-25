@@ -1,6 +1,9 @@
 # ignore everything in the train folder
 train/**
 
+# ignore everything in the test folder
+test/**
+
 # ignore the zip files
 *.zip
 
