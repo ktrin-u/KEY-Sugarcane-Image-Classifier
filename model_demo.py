@@ -33,11 +33,11 @@ def method1_predict():
         img_array = keras.utils.img_to_array(img)
         img_resized = keras.layers.Resizing(96, 96, pad_to_aspect_ratio=True)(img_array)
         img_resized = tf.expand_dims(img_resized, axis=0)
-        prediction = model.predict(img_resized, batch_size=1, verbose="3")  # type: ignore
+        prediction = model.predict(img_resized, batch_size=1, verbose="2")  # type: ignore
         prediction_class_index = prediction.argmax()
         # print(prediction)
         result = f"{img_name},{classes[prediction_class_index]}"
-        # print(result)
+        print(result)
         output_file.write(result + "\n")
 
     output_file.close()
@@ -55,11 +55,13 @@ def method2_predict():
         img = Image.open(TEST_PATH.joinpath(img_name))
         img_array = keras.utils.img_to_array(img)
         img_resized = tf.expand_dims(img_array, axis=0)
-        prediction = model.predict(img_resized, batch_size=1, verbose="3")  # type: ignore
+        prediction = model.predict(img_resized, batch_size=1, verbose="2")  # type: ignore
         prediction_class_index = prediction.argmax()
         # print(prediction)
         result = f"{img_name},{classes[prediction_class_index]}"
-        # print(result)
+        print(result)
         output_file.write(result + "\n")
 
     output_file.close()
+
+method1_predict()
