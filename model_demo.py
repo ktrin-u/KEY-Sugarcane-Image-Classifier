@@ -18,7 +18,7 @@ classes.sort()
 
 MODEL_PATH = "hf://ktrin-u/KEY-cnn"
 TEST_PATH = Path("./test/")
-OUTPUT_FILENAME = Path("./results.csv")
+OUTPUT_FILENAME = Path("./cnn-results.csv")
 
 model = keras.models.load_model(MODEL_PATH)
 output_file = open(OUTPUT_FILENAME, "w+")
@@ -28,7 +28,7 @@ image_names.sort(key=lambda name: int(name.split(".")[0]))
 for img_name in image_names:
     img = Image.open(TEST_PATH.joinpath(img_name))
     img_array = keras.utils.img_to_array(img)
-    img_resized = keras.layers.Resizing(128, 128, pad_to_aspect_ratio=True)(img_array)
+    img_resized = keras.layers.Resizing(96, 96, pad_to_aspect_ratio=True)(img_array)
     img_resized = tf.expand_dims(img_resized, axis=0)
     prediction = model.predict(img_resized, batch_size=1, verbose="3")  # type: ignore
     prediction_class_index = prediction.argmax()
