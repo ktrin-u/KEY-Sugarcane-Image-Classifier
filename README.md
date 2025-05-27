@@ -8,11 +8,21 @@
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
 
-# CS 180 Project, Group KEY: Sugarcane Image Classification
+# Sugarcane Image Classification using Machine Learning
+
+This project is a requirement under the CS 180 2425.2 course of the University of the Philippines Diliman.
 
 The documentation for the training process is available in `model_training.ipynb`
 
 The demo version is available in `model_demo.ipynb`.
+
+Two models were developed for this classification problem.
+
+- The first model is a Convolutional Neural Network (CNN). It can be found on [Hugging Face](https://huggingface.co/) at [ktrin-u/KEY-Cnn](https://huggingface.co/ktrin-u/KEY-cnn)
+
+- The second model is a Vision Transformer (ViT). It can be found on [Hugging Face](https://huggingface.co/) as well at [ktrin-u/KEY-ViT](https://huggingface.co/ktrin-u/KEY-ViT).
+
+The dataset was provided to us by a professor.
 
 The following research papers were referred to during development
 - [Vision Transformer-Based Framework for AI-Generated Image Detection in Interior Design](https://informatica.si/index.php/informatica/article/view/7979#:~:text=The%20best%20tradeoff%20between%20accuracy,with%20lower%20accuracy%20than%20speed)
@@ -24,7 +34,7 @@ The following research papers were referred to during development
 This project and its dependencies are managed using [uv by Astral](https://docs.astral.sh/uv/).
 
 To run the project, follow the steps below.
-1. Clone the repo
+1. Clone the [repository](https://github.com/ktrin-u/KEY-Sugarcane-Image-Classifier)
 2. Install [uv by Astral](https://docs.astral.sh/uv/).
 3. If Python 3.12 is not available within the system, run `uv python install 3.12`
 4. Run `uv venv -p 3.12`
