@@ -17,7 +17,7 @@ results/**
 **/*.sqlite3
 
 # ignore static files
-**/staticfiles/*
+# **/staticfiles/*
 
 # ignore .env files
 **/.env
