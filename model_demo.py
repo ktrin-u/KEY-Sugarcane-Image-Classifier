@@ -30,6 +30,7 @@ def method1_predict(n: int):
     # This loads the CNN model and prepares the output file to be written to
     model = keras.models.load_model(MODEL_PATH)
     output_file = open(OUTPUT_FILENAME, "w+")
+    output_file.write("image_filename,predicted_label\n") # Add header row
     image_names = os.listdir(TEST_PATH)
     image_names.sort(key=lambda name: int(name.split(".")[0]))
     image_names = image_names[:n]
@@ -62,6 +63,7 @@ def method2_predict(n: int):
     # This loads the ViT model and prepares the output file to be written to
     model = keras.models.load_model(MODEL_PATH)
     output_file = open(OUTPUT_FILENAME, "w+")
+    output_file.write("image_filename,predicted_label\n") # Add header row
     image_names = os.listdir(TEST_PATH)
     image_names.sort(key=lambda name: int(name.split(".")[0]))
 
